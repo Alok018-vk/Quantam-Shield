@@ -113,6 +113,17 @@ export const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
                 <button
                   onClick={() => {
                     setDropdownOpen(false);
+                    navigate('/');
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm text-cyber-primary hover:bg-cyber-bg flex items-center space-x-2 font-medium"
+                >
+                  <ShieldCheck size={16} className="text-cyan-hover" />
+                  <span>Prototype Role Selection</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setDropdownOpen(false);
                     navigate('/profile');
                   }}
                   className="w-full text-left px-4 py-2 text-sm text-cyber-primary hover:bg-cyber-bg flex items-center space-x-2 font-medium"

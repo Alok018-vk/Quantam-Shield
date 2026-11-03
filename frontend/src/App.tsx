@@ -7,6 +7,7 @@ import { AppLayout } from './components/layout/AppLayout';
 // Pages
 import { Login } from './pages/Login';
 import { ProfilePage } from './pages/ProfilePage';
+import { PrototypeEntryPage } from './pages/PrototypeEntryPage';
 
 // Digital Signature User Pages
 import { SignatureDashboard } from './pages/signature/SignatureDashboard';
@@ -28,22 +29,16 @@ import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { UsersManagement } from './pages/admin/UsersManagement';
 import { AuditLogsPage } from './pages/admin/AuditLogsPage';
 
-const RootRedirect: React.FC = () => {
-  const { user, isAuthenticated, isLoading, getRoleDashboardPath } = useAuth();
-  
-  if (isLoading) return null;
-  if (!isAuthenticated || !user) return <Navigate to="/login" replace />;
-  return <Navigate to={getRoleDashboardPath(user.role)} replace />;
-};
-
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Public Login Route */}
+          {/* Prototype Role Entry & Public Routes */}
+          <Route path="/" element={<PrototypeEntryPage />} />
+          <Route path="/portal" element={<PrototypeEntryPage />} />
+          <Route path="/prototype" element={<PrototypeEntryPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<RootRedirect />} />
 
           {/* Protected Application Layout */}
           <Route element={<ProtectedRoute />}>
